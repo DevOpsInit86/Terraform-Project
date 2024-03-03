@@ -119,13 +119,12 @@ resource "aws_security_group" "allow_web" {
   }
 
   ingress {
-    description = "All traffic"
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
+    description = "All ICMP-IPV4"
+    from_port   = -1
+    to_port     = -1
+    protocol    = "icmp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
 
   egress {
     from_port   = 0
@@ -161,14 +160,13 @@ resource "aws_security_group" "allow_traffic" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  ingress {
-    description = "All Traffic"
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    self = true
+ingress {
+    description = "All ICMP-IPV4"
+    from_port   = -1
+    to_port     = -1
+    protocol    = "icmp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
-
 
   egress {
     from_port   = 0
